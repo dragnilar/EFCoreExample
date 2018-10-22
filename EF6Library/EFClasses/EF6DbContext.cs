@@ -24,15 +24,23 @@ namespace EF6Library.EFClasses
 
 
 
+        /// <summary>
+        /// The connection string for the DbContext. Can be changed on the fly if you so desire. It is recommended to create this using
+        /// System.Data.SqlClient.SqlConnectionStringBuilder to ensure that the string is formatted correctly.
+        /// TODO - Consider making this more configurable and not making it static
+        /// </summary>
+        /// <returns>A SQL Connection string</returns>
         public static string ConnectionString()
         {
-            var connectionString = new SqlConnectionStringBuilder();
+            var connectionString = new SqlConnectionStringBuilder
+            {
+                DataSource = "(localdb)\\MSSQLLocalDB",
+                InitialCatalog = "EF6DbContextDb",
+                IntegratedSecurity = true,
+                MultipleActiveResultSets = true,
+                ApplicationName = "EntityFramework"
+            };
 
-            connectionString.DataSource = "(localdb)\\MSSQLLocalDB";
-            connectionString.InitialCatalog = "EF6DbContextDb";
-            connectionString.IntegratedSecurity = true;
-            connectionString.MultipleActiveResultSets = true;
-            connectionString.ApplicationName = "EntityFramework";
 
             return connectionString.ToString();
 
