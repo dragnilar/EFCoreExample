@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EF6Common\EF6Common.csproj">
+      <Project>{163d4816-6c4a-48f7-8566-9a858d065882}</Project>
+      <Name>EF6Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EF6Library\EF6Library.csproj">
       <Project>{69f2041a-0984-4195-ad57-9aca92c3e524}</Project>
       <Name>EF6Library</Name>

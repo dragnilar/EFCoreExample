@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EF6Common.Models;
 using EF6Library.EFClasses;
-using EF6Library.Models;
 
 namespace EF6Console
 {
@@ -12,6 +12,8 @@ namespace EF6Console
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Adding some test monsters to the database, please wait...");
+
             using (var db = new EF6DbContext())
             {
                 db.Monsters.Add(new Monster
@@ -33,6 +35,9 @@ namespace EF6Console
                 });
 
                 db.SaveChanges();
+                
+                Console.WriteLine("Test monsters added, press any key to display whats in the database.");
+                Console.ReadKey();
 
                 foreach (var monster in db.Monsters)
                 {
