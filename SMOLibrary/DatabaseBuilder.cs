@@ -8,17 +8,29 @@ using Microsoft.SqlServer.Management.Smo;
 
 namespace SMOLibrary
 {
-    public class DatabaseBuilder
+    internal static class DatabaseBuilder
     {
-        public void CreateDatabaseIfNotExists()
+        internal static void CreateDatabaseIfNotExists(bool dropPreExistingDatabase = true)
         {
-            var server = DataAccess.GetServer();
-            if (!server.Databases.Contains("EF6DbContextDb"))
+            var server = SmoConnection.GetServerWithoutDatabaseSpecified();
+            if (dropPreExistingDatabase && server.Databases.Contains("EF6DbContextDb"))
             {
-                var database = DataAccess.GetDatabase(server);
-                database.Create();
-                new TableGenerator().GenerateTables(database);
+                server.KillDatabase("EF6DbContextDb");
+                CreateDatabase(server);
             }
+            else if (!server.Databases.Contains("EF6DbContextDb"))
+            {
+                CreateDatabase(server);
+
+            }
+        }
+
+
+        private static void CreateDatabase(Server server)
+        {
+            var database = SmoConnection.GetDatabase(server);
+            database.Create();
+            TableGenerator.GenerateTables(database);
         }
 
 

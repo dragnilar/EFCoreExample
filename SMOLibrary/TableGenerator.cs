@@ -7,12 +7,12 @@ using Microsoft.SqlServer.Management.Smo;
 
 namespace SMOLibrary
 {
-    public class TableGenerator
+    internal static class TableGenerator
     {
-        private List<Func<Database, Table>> TableFunctions;
+        private static List<Func<Database, Table>> TableFunctions;
 
 
-        public TableGenerator()
+        static TableGenerator()
         {
             TableFunctions.Add(GenerateWeaponsTable);
             TableFunctions.Add(GenerateMonsterTable);
@@ -21,7 +21,7 @@ namespace SMOLibrary
             TableFunctions.Add(GenerateItemsTable);
         }
 
-        public void GenerateTables(Database database)
+        internal static void GenerateTables(Database database)
         {
             foreach (var function in TableFunctions)
             {
@@ -29,7 +29,7 @@ namespace SMOLibrary
             }
         }
 
-        private Table GenerateMonsterTable(Database database)
+        private static Table GenerateMonsterTable(Database database)
         {
             var table = new Table(database, "Monsters");
             var idColumn = new Column
@@ -54,7 +54,7 @@ namespace SMOLibrary
             return table;
         }
 
-        private Table GenerateWeaponsTable(Database database)
+        private static Table GenerateWeaponsTable(Database database)
         {
             var table = new Table(database, "Weapons");
             var idColumn = new Column
@@ -79,7 +79,7 @@ namespace SMOLibrary
             return table;
         }
 
-        private Table GenerateCharactersTable(Database database)
+        private static Table GenerateCharactersTable(Database database)
         {
             var table = new Table(database, "Characters");
             var idColumn = new Column
@@ -104,7 +104,7 @@ namespace SMOLibrary
             return table;
         }
 
-        private Table GenerateItemsTable(Database database)
+        private static Table GenerateItemsTable(Database database)
         {
             var table = new Table(database, "Items");
             var idColumn = new Column
@@ -129,7 +129,7 @@ namespace SMOLibrary
             return table;
         }
 
-        private Table GenerateArmorsTable(Database database)
+        private static Table GenerateArmorsTable(Database database)
         {
             var table = new Table(database, "Armors");
             var idColumn = new Column

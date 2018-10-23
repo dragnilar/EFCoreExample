@@ -133,10 +133,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess.cs" />
+    <Compile Include="SmoConnection.cs" />
     <Compile Include="DatabaseBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableGenerator.cs" />
+    <Compile Include="WeaponDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
