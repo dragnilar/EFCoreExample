@@ -53,6 +53,10 @@
     <Compile Include="Migrations\201810220239376_InitialCreate.Designer.cs">
       <DependentUpon>201810220239376_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810250634229_Second.cs" />
+    <Compile Include="Migrations\201810250634229_Second.Designer.cs">
+      <DependentUpon>201810250634229_Second.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,6 +67,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810220239376_InitialCreate.resx">
       <DependentUpon>201810220239376_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810250634229_Second.resx">
+      <DependentUpon>201810250634229_Second.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

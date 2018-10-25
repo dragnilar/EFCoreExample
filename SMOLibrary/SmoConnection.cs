@@ -16,10 +16,11 @@ namespace SMOLibrary
             return new Database(server, "EF6DbContextDb");
         }
 
+        
+
         internal static Server GetServer()
         {
             var server = new Server();
-
 
             server.ConnectionContext.ConnectionString = EF6Common.Config.LocalDbConnectionStringRegular;
 

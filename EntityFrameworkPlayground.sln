@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF6Common", "EF6Common\EF6C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMOLibrary", "SMOLibrary\SMOLibrary.csproj", "{D3C008AE-0C47-4A97-A147-31B3DB1438C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF6DataService", "EF6DataService\EF6DataService.csproj", "{FA1CFBB1-7DB5-4C02-8A3B-19CF57017111}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D3C008AE-0C47-4A97-A147-31B3DB1438C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3C008AE-0C47-4A97-A147-31B3DB1438C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3C008AE-0C47-4A97-A147-31B3DB1438C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA1CFBB1-7DB5-4C02-8A3B-19CF57017111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA1CFBB1-7DB5-4C02-8A3B-19CF57017111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA1CFBB1-7DB5-4C02-8A3B-19CF57017111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA1CFBB1-7DB5-4C02-8A3B-19CF57017111}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

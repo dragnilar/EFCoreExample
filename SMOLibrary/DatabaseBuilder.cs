@@ -8,9 +8,9 @@ using Microsoft.SqlServer.Management.Smo;
 
 namespace SMOLibrary
 {
-    internal static class DatabaseBuilder
+    public static class DatabaseBuilder
     {
-        internal static void CreateDatabaseIfNotExists(bool dropPreExistingDatabase = true)
+        public static void CreateDatabaseIfNotExists(bool dropPreExistingDatabase = true)
         {
             var server = SmoConnection.GetServerWithoutDatabaseSpecified();
             if (dropPreExistingDatabase && server.Databases.Contains("EF6DbContextDb"))

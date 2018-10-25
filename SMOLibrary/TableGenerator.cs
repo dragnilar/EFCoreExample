@@ -9,16 +9,19 @@ namespace SMOLibrary
 {
     internal static class TableGenerator
     {
-        private static List<Func<Database, Table>> TableFunctions;
+        private static readonly List<Action<Database>> TableFunctions;
 
 
         static TableGenerator()
         {
-            TableFunctions.Add(GenerateWeaponsTable);
-            TableFunctions.Add(GenerateMonsterTable);
-            TableFunctions.Add(GenerateArmorsTable);
-            TableFunctions.Add(GenerateCharactersTable);
-            TableFunctions.Add(GenerateItemsTable);
+            TableFunctions = new List<Action<Database>>
+            {
+                GenerateWeaponsTable,
+                GenerateMonsterTable,
+                GenerateArmorsTable,
+                GenerateCharactersTable,
+                GenerateItemsTable
+            };
         }
 
         internal static void GenerateTables(Database database)
@@ -29,16 +32,13 @@ namespace SMOLibrary
             }
         }
 
-        private static Table GenerateMonsterTable(Database database)
+        private static void GenerateMonsterTable(Database database)
         {
             var table = new Table(database, "Monsters");
-            var idColumn = new Column
+            var idColumn = new Column(table, "MonsterId")
             {
-                Parent = table,
-                Identity = true,
                 DataType = DataType.Int,
-                Name = "MonsterId"
-
+                Identity = true
             };
             table.Columns.Add(idColumn);
             table.Columns.Add(new Column(table, "MonsterName", DataType.NVarChar(1000)));
@@ -50,20 +50,16 @@ namespace SMOLibrary
                 IsClustered = true
             };
             pkIndex.IndexedColumns.Add(new IndexedColumn(pkIndex, idColumn.Name));
-
-            return table;
+            table.Create();
         }
 
-        private static Table GenerateWeaponsTable(Database database)
+        private static void GenerateWeaponsTable(Database database)
         {
             var table = new Table(database, "Weapons");
-            var idColumn = new Column
+            var idColumn = new Column(table, "WeaponId")
             {
-                Parent = table,
-                Identity = true,
                 DataType = DataType.Int,
-                Name = "WeaponId"
-
+                Identity = true
             };
             table.Columns.Add(idColumn);
             table.Columns.Add(new Column(table, "WeaponName", DataType.NVarChar(1000)));
@@ -75,20 +71,17 @@ namespace SMOLibrary
                 IsClustered = true
             };
             pkIndex.IndexedColumns.Add(new IndexedColumn(pkIndex, idColumn.Name));
+            table.Create();
 
-            return table;
         }
 
-        private static Table GenerateCharactersTable(Database database)
+        private static void GenerateCharactersTable(Database database)
         {
             var table = new Table(database, "Characters");
-            var idColumn = new Column
+            var idColumn = new Column(table, "CharacterId")
             {
-                Parent = table,
-                Identity = true,
                 DataType = DataType.Int,
-                Name = "CharacterId"
-
+                Identity = true
             };
             table.Columns.Add(idColumn);
             table.Columns.Add(new Column(table, "CharacterName", DataType.NVarChar(1000)));
@@ -101,19 +94,16 @@ namespace SMOLibrary
             };
             pkIndex.IndexedColumns.Add(new IndexedColumn(pkIndex, idColumn.Name));
 
-            return table;
+            table.Create();
         }
 
-        private static Table GenerateItemsTable(Database database)
+        private static void GenerateItemsTable(Database database)
         {
             var table = new Table(database, "Items");
-            var idColumn = new Column
+            var idColumn = new Column(table, "ItemId")
             {
-                Parent = table,
-                Identity = true,
                 DataType = DataType.Int,
-                Name = "ItemId"
-
+                Identity = true
             };
             table.Columns.Add(idColumn);
             table.Columns.Add(new Column(table, "ItemName", DataType.NVarChar(1000)));
@@ -126,19 +116,16 @@ namespace SMOLibrary
             };
             pkIndex.IndexedColumns.Add(new IndexedColumn(pkIndex, idColumn.Name));
 
-            return table;
+            table.Create();
         }
 
-        private static Table GenerateArmorsTable(Database database)
+        private static void GenerateArmorsTable(Database database)
         {
             var table = new Table(database, "Armors");
-            var idColumn = new Column
+            var idColumn = new Column(table, "ArmorId")
             {
-                Parent = table,
-                Identity = true,
                 DataType = DataType.Int,
-                Name = "ArmorId"
-
+                Identity = true
             };
             table.Columns.Add(idColumn);
             table.Columns.Add(new Column(table, "ArmorName", DataType.NVarChar(1000)));
@@ -150,8 +137,7 @@ namespace SMOLibrary
                 IsClustered = true
             };
             pkIndex.IndexedColumns.Add(new IndexedColumn(pkIndex, idColumn.Name));
-
-            return table;
+            table.Create();
         }
     }
 }

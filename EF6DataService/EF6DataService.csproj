@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{163D4816-6C4A-48F7-8566-9A858D065882}</ProjectGuid>
+    <ProjectGuid>{FA1CFBB1-7DB5-4C02-8A3B-19CF57017111}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EF6Common</RootNamespace>
-    <AssemblyName>EF6Common</AssemblyName>
+    <RootNamespace>EF6DataService</RootNamespace>
+    <AssemblyName>EF6DataService</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,15 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config.cs" />
-    <Compile Include="DataServiceTypes.cs" />
-    <Compile Include="Interfaces\IWeaponDao.cs" />
-    <Compile Include="Models\Armor.cs" />
-    <Compile Include="Models\Character.cs" />
-    <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\Monster.cs" />
-    <Compile Include="Models\Weapon.cs" />
+    <Compile Include="DataServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EF6Common\EF6Common.csproj">
+      <Project>{163d4816-6c4a-48f7-8566-9a858d065882}</Project>
+      <Name>EF6Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EF6Library\EF6Library.csproj">
+      <Project>{69f2041a-0984-4195-ad57-9aca92c3e524}</Project>
+      <Name>EF6Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMOLibrary\SMOLibrary.csproj">
+      <Project>{d3c008ae-0c47-4a97-a147-31b3db1438c0}</Project>
+      <Name>SMOLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
