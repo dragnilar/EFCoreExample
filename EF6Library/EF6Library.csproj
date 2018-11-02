@@ -73,9 +73,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EF6Common\EF6Common.csproj">
-      <Project>{163d4816-6c4a-48f7-8566-9a858d065882}</Project>
-      <Name>EF6Common</Name>
+    <ProjectReference Include="..\EFDomain\EFDomain.csproj">
+      <Project>{daba6adf-b5ea-4272-a327-a7bb5124455e}</Project>
+      <Name>EFDomain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

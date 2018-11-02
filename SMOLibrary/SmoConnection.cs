@@ -22,7 +22,7 @@ namespace SMOLibrary
         {
             var server = new Server();
 
-            server.ConnectionContext.ConnectionString = EF6Common.Config.LocalDbConnectionStringRegular;
+            server.ConnectionContext.ConnectionString = EFDomain.Config.LocalDbConnectionStringRegular;
 
             return server;
         }
@@ -30,7 +30,7 @@ namespace SMOLibrary
         internal static Server GetServerWithoutDatabaseSpecified()
         {
             var server = new Server();
-            server.ConnectionContext.ConnectionString = EF6Common.Config.LocalDbConnectionStringRegularWithNoDb;
+            server.ConnectionContext.ConnectionString = EFDomain.Config.LocalDbConnectionStringRegularWithNoDb;
             return server;
         }
     }

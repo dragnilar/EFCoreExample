@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EF6Common;
-using EF6Common.Models;
+using EFDomain;
+using EFDomain.Models;
 using EF6DataService;
 using EF6Library.EFClasses;
+using Environment = System.Environment;
 
 namespace EF6Console
 {
@@ -14,12 +11,48 @@ namespace EF6Console
     {
         static void Main(string[] args)
         {
-            EFTest();
-            SMOTest();
-            Console.WriteLine("Press any key to exit");
-            Console.ReadKey();
-
+            MainMenu();
         }
+
+        private static void MainMenu()
+        {
+            while (true)
+            {
+                Console.WriteLine("Enter one of the following options to run a test...");
+                Console.WriteLine("1. EF test");
+                Console.WriteLine("2. SMO test");
+                Console.WriteLine("ESC. Exit");
+
+                var input = Console.ReadKey();
+
+                ProcessMenuOptions(input);
+
+            }
+        }
+
+        private static void ProcessMenuOptions(ConsoleKeyInfo input)
+        {
+            switch (input.Key)
+            {
+                case ConsoleKey.D1:
+                case ConsoleKey.NumPad1:
+                    EFTest();
+                    Console.Clear();
+                    break;
+                case ConsoleKey.D2:
+                case ConsoleKey.NumPad2:
+                    SMOTest();
+                    Console.Clear();
+                    break;
+                case ConsoleKey.Escape:
+                    Environment.Exit(0);
+                    break;
+                 default:
+                    Console.Clear();
+                    break;
+            }
+        }
+
 
         private static void SMOTest()
         {

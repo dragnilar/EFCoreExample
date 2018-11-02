@@ -6,14 +6,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EF6Common.Models;
+using EFDomain.Models;
 
 namespace EF6Library.EFClasses
 {
     public class EF6DbContext : DbContext
     {
 
-        public EF6DbContext() : base(EF6Common.Config.LocalDbConnectionStringEf)
+        public EF6DbContext() : base(EFDomain.Config.LocalDbConnectionStringEf)
         {
 
         }

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using EF6Common.Models;
 using GenericConversion;
-using EF6Common.Interfaces;
+using EFDomain.Interfaces;
+using EFDomain.Models;
 
 namespace SMOLibrary.DAOs
 {

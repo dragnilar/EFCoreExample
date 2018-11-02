@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -150,10 +152,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EF6Common\EF6Common.csproj">
-      <Project>{163d4816-6c4a-48f7-8566-9a858d065882}</Project>
-      <Name>EF6Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EF6DataService\EF6DataService.csproj">
       <Project>{fa1cfbb1-7db5-4c02-8a3b-19cf57017111}</Project>
       <Name>EF6DataService</Name>
@@ -161,6 +159,10 @@
     <ProjectReference Include="..\EF6Library\EF6Library.csproj">
       <Project>{69f2041a-0984-4195-ad57-9aca92c3e524}</Project>
       <Name>EF6Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EFDomain\EFDomain.csproj">
+      <Project>{daba6adf-b5ea-4272-a327-a7bb5124455e}</Project>
+      <Name>EFDomain</Name>
     </ProjectReference>
     <ProjectReference Include="..\SMOLibrary\SMOLibrary.csproj">
       <Project>{d3c008ae-0c47-4a97-a147-31b3db1438c0}</Project>

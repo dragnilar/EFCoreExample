@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EF6Common.Interfaces;
+using EFDomain.Interfaces;
 using SMOLibrary;
 using SMOLibrary.DAOs;
 
