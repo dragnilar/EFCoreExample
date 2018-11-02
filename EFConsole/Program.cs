@@ -1,11 +1,11 @@
 ﻿using System;
-using EFDataServices;
 using EF6Library.EFClasses;
+using EFDataServices;
 using EFDomain;
 using EFDomain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EF6Console
+namespace EFConsole
 {
     internal class Program
     {
