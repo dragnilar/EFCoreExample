@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SqlServer.Management.Smo;
+﻿using Microsoft.SqlServer.Management.Smo;
 
 namespace SMOLibrary
 {
@@ -21,7 +15,6 @@ namespace SMOLibrary
             else if (!server.Databases.Contains("EF6DbContextDb"))
             {
                 CreateDatabase(server);
-
             }
         }
 
@@ -32,11 +25,5 @@ namespace SMOLibrary
             database.Create();
             TableGenerator.GenerateTables(database);
         }
-
-
-
-
-
-
     }
 }

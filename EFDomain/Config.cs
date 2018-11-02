@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 
 namespace EFDomain
 {
@@ -11,7 +6,9 @@ namespace EFDomain
     {
         public static readonly string LocalDbConnectionStringEf = GetLocalDbConnectionStringForEf();
         public static readonly string LocalDbConnectionStringRegular = GetLocalDbConnectionStringRegular();
-        public static readonly string LocalDbConnectionStringRegularWithNoDb = GetLocalDbConnectionStringWithNoDatabase();
+
+        public static readonly string LocalDbConnectionStringRegularWithNoDb =
+            GetLocalDbConnectionStringWithNoDatabase();
 
 
         private static string GetLocalDbConnectionStringRegular()

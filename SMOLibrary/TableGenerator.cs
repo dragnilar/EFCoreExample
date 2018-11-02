@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.SqlServer.Management.Smo;
 
 namespace SMOLibrary
@@ -26,10 +23,7 @@ namespace SMOLibrary
 
         internal static void GenerateTables(Database database)
         {
-            foreach (var function in TableFunctions)
-            {
-                function.Invoke(database);
-            }
+            foreach (var function in TableFunctions) function.Invoke(database);
         }
 
         private static void GenerateMonsterTable(Database database)
@@ -72,7 +66,6 @@ namespace SMOLibrary
             };
             pkIndex.IndexedColumns.Add(new IndexedColumn(pkIndex, idColumn.Name));
             table.Create();
-
         }
 
         private static void GenerateCharactersTable(Database database)

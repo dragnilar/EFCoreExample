@@ -1,14 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using GenericConversion;
 using EFDomain.Interfaces;
 using EFDomain.Models;
+using GenericConversion;
 
 namespace SMOLibrary.DAOs
 {
-    public class WeaponDaoSMO : IWeaponDAO
+    public class WeaponDaoSMO : IWeaponService<Weapon>
     {
-        public IEnumerable<Weapon> GetAllWeapons()
+        public Weapon GetById(int id)
+        {
+            var server = SmoConnection.GetServer();
+            var sqlText = $"Select Top 1 * from Weapons Where WeaponId = {id}";
+            var result = server.ConnectionContext.ExecuteWithResults(sqlText);
+            var list = Cast.ToGenericList<Weapon>(result.Tables[0], false);
+            return list.Count > 0 ? list[0] : null;
+        }
+
+        public IEnumerable<Weapon> GetAllEntities()
         {
             var server = SmoConnection.GetServer();
             var sqlText = "Select * From Weapons";
@@ -17,57 +26,38 @@ namespace SMOLibrary.DAOs
             return list;
         }
 
-        public Weapon GetWeapon(Weapon weapon)
+        public void AddEntity(Weapon entity)
         {
-            var server = SmoConnection.GetServer();
-            var sqlText = $"Select Top 1 * from Weapons Where WeaponId = {weapon.WeaponId}";
-            var result = server.ConnectionContext.ExecuteWithResults(sqlText);
-            var list = Cast.ToGenericList<Weapon>(result.Tables[0], false);
-            return list.Count > 0 ? list[0] : null;
-        }
-
-        
-        public void AddWeapon(Weapon weapon)
-        {
-            if (weapon.WeaponId >= 1)
-            {
-                throw new ArgumentException("Cannot insert a weapon with a preset Id");
-            }
+            if (entity.WeaponId >= 1) throw new ArgumentException("Cannot insert a weapon with a preset Id");
             var server = SmoConnection.GetServer();
 
             var sqlText = $"INSERT INTO Weapons" +
                           $"(WeaponName, WeaponType)" +
                           $"VALUES" +
-                          $"('{weapon.WeaponName}', '{weapon.WeaponType}')";
+                          $"('{entity.WeaponName}', '{entity.WeaponType}')";
 
             server.ConnectionContext.ExecuteNonQuery(sqlText);
         }
 
-        public void UpdateWeapon(Weapon weapon)
+        public void UpdateEntity(Weapon entity)
         {
-            if (weapon.WeaponId <= 0)
-            {
-                throw new ArgumentException("Weapon must have a valid Id");
-            }
+            if (entity.WeaponId <= 0) throw new ArgumentException("Weapon must have a valid Id");
             var server = SmoConnection.GetServer();
 
             var sqlText = $"Update Weapons" +
-                          $"Set WeaponName = {weapon.WeaponName}, WeaponType = {weapon.WeaponType}" +
-                          $"Where WeaponId = {weapon.WeaponId}";
+                          $"Set WeaponName = {entity.WeaponName}, WeaponType = {entity.WeaponType}" +
+                          $"Where WeaponId = {entity.WeaponId}";
 
             server.ConnectionContext.ExecuteNonQuery(sqlText);
         }
 
-        public void DeleteWeapon(Weapon weapon)
+        public void DeleteById(int id)
         {
-            if (weapon.WeaponId <= 0)
-            {
-                throw new ArgumentException("Weapon must have a valid Id.");
-            }
+            if (id <= 0) throw new ArgumentException("Weapon must have a valid Id.");
             var server = SmoConnection.GetServer();
 
             var sqlText = $"DELETE From Weapons"
-                          + $"Where WeaponId = {weapon.WeaponId}";
+                          + $"Where WeaponId = {id}";
 
             server.ConnectionContext.ExecuteNonQuery(sqlText);
         }

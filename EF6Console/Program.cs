@@ -1,15 +1,14 @@
 ﻿using System;
-using EFDomain;
-using EFDomain.Models;
 using EF6DataService;
 using EF6Library.EFClasses;
-using Environment = System.Environment;
+using EFDomain;
+using EFDomain.Models;
 
 namespace EF6Console
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             MainMenu();
         }
@@ -26,7 +25,6 @@ namespace EF6Console
                 var input = Console.ReadKey();
 
                 ProcessMenuOptions(input);
-
             }
         }
 
@@ -47,7 +45,7 @@ namespace EF6Console
                 case ConsoleKey.Escape:
                     Environment.Exit(0);
                     break;
-                 default:
+                default:
                     Console.Clear();
                     break;
             }
@@ -60,15 +58,12 @@ namespace EF6Console
             Console.WriteLine("Adding some test weapons to the database, please wait...");
             var service = new DataServices(DataServiceTypes.SMO);
             service.CheckDatabaseAction(true);
-            service.WeaponDAO.AddWeapon(new Weapon{WeaponName = "Test", WeaponType = "Test"});
-            service.WeaponDAO.AddWeapon(new Weapon{WeaponName = "Test 2", WeaponType = "Test"});
-            service.WeaponDAO.AddWeapon(new Weapon{WeaponName = "Test 3", WeaponType = "Test"});
+            service.Weapons.AddEntity(new Weapon {WeaponName = "Test", WeaponType = "Test"});
+            service.Weapons.AddEntity(new Weapon {WeaponName = "Test 2", WeaponType = "Test"});
+            service.Weapons.AddEntity(new Weapon {WeaponName = "Test 3", WeaponType = "Test"});
             Console.WriteLine("Test Weapons added, press any key to display whats in the database.");
             Console.ReadKey();
-            foreach (var weapon in service.WeaponDAO.GetAllWeapons())
-            {
-                Console.WriteLine(weapon.WeaponName);
-            }
+            foreach (var weapon in service.Weapons.GetAllEntities()) Console.WriteLine(weapon.WeaponName);
         }
 
         private static void EFTest()
@@ -107,13 +102,8 @@ namespace EF6Console
                 Console.WriteLine("Test monsters added, press any key to display whats in the database.");
                 Console.ReadKey();
 
-                foreach (var monster in db.Monsters)
-                {
-                    Console.WriteLine(monster.MonsterName);
-                }
+                foreach (var monster in db.Monsters) Console.WriteLine(monster.MonsterName);
             }
         }
-
-        
     }
 }

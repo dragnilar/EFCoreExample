@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EFDomain.Interfaces;
+using EFDomain.Models;
 using SMOLibrary;
 using SMOLibrary.DAOs;
 
@@ -11,29 +8,21 @@ namespace EF6DataService
 {
     public class DataServices
     {
-        public IWeaponDAO WeaponDAO;
-        public Action<bool> CheckDatabaseAction { get; set; }
-
         public DataServices(string accessType)
         {
             if (accessType == "SMO")
-            {
                 SetDAOForSMO();
-            }
             else
-            {
                 throw new ArgumentException("Invalid access type!");
-            }
         }
+
+        public IWeaponService<Weapon> Weapons { get; set; }
+        public Action<bool> CheckDatabaseAction { get; set; }
 
         private void SetDAOForSMO()
         {
-            WeaponDAO = new WeaponDaoSMO();
+            Weapons = new WeaponDaoSMO();
             CheckDatabaseAction = DatabaseBuilder.CreateDatabaseIfNotExists;
-
         }
-
-        
     }
-
 }

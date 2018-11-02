@@ -1,34 +1,32 @@
+using System.Data.Entity.Migrations;
+
 namespace EF6Library.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Monsters",
-                c => new
+                    "dbo.Monsters",
+                    c => new
                     {
-                        MonsterId = c.Int(nullable: false, identity: true),
+                        MonsterId = c.Int(false, true),
                         MonsterName = c.String(maxLength: 1000),
-                        MonsterType = c.String(maxLength: 250),
+                        MonsterType = c.String(maxLength: 250)
                     })
                 .PrimaryKey(t => t.MonsterId);
-            
+
             CreateTable(
-                "dbo.Weapons",
-                c => new
+                    "dbo.Weapons",
+                    c => new
                     {
-                        WeaponId = c.Int(nullable: false, identity: true),
+                        WeaponId = c.Int(false, true),
                         WeaponName = c.String(maxLength: 1000),
-                        WeaponType = c.String(maxLength: 250),
+                        WeaponType = c.String(maxLength: 250)
                     })
                 .PrimaryKey(t => t.WeaponId);
-            
         }
-        
+
         public override void Down()
         {
             DropTable("dbo.Weapons");

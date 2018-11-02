@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Data.Entity;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using EFDomain;
 using EFDomain.Models;
 
 namespace EF6Library.EFClasses
 {
     public class EF6DbContext : DbContext
     {
-
-        public EF6DbContext() : base(EFDomain.Config.LocalDbConnectionStringEf)
+        public EF6DbContext() : base(Config.LocalDbConnectionStringEf)
         {
-
         }
 
 
@@ -24,6 +16,5 @@ namespace EF6Library.EFClasses
         public DbSet<Armor> Armors { get; set; }
         public DbSet<Character> Characters { get; set; }
         public DbSet<Item> Items { get; set; }
-
     }
 }
