@@ -1,8 +1,9 @@
 ﻿using System;
-using EF6DataService;
+using EFDataServices;
 using EF6Library.EFClasses;
 using EFDomain;
 using EFDomain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EF6Console
 {
@@ -70,14 +71,11 @@ namespace EF6Console
         {
             Console.WriteLine("Performing test using EF6...");
 
-            using (var db = new EF6DbContext())
-            {
-                db.Database.Delete();
-            }
+            DropAndMigrate();
 
             Console.WriteLine("Adding some test monsters to the database, please wait...");
 
-            using (var db = new EF6DbContext())
+            using (var db = new EFDbContext())
             {
                 db.Monsters.Add(new Monster
                 {
@@ -103,6 +101,15 @@ namespace EF6Console
                 Console.ReadKey();
 
                 foreach (var monster in db.Monsters) Console.WriteLine(monster.MonsterName);
+            }
+        }
+
+        private static void DropAndMigrate()
+        {
+            using (var db = new EFDbContext())
+            {
+                db.Database.EnsureDeleted();
+                db.Database.Migrate();
             }
         }
     }

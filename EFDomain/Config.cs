@@ -16,7 +16,7 @@ namespace EFDomain
             var connectionBuilder = new SqlConnectionStringBuilder
             {
                 DataSource = "(localdb)\\MSSQLLocalDB",
-                InitialCatalog = "EF6DbContextDb",
+                InitialCatalog = "EFDbContextDb",
                 IntegratedSecurity = true,
                 MultipleActiveResultSets = true
             };
@@ -29,10 +29,9 @@ namespace EFDomain
             var connectionBuilder = new SqlConnectionStringBuilder
             {
                 DataSource = "(localdb)\\MSSQLLocalDB",
-                InitialCatalog = "EF6DbContextDb",
+                InitialCatalog = "EFDbContextDb",
                 IntegratedSecurity = true,
-                MultipleActiveResultSets = true,
-                ApplicationName = "EntityFramework"
+                MultipleActiveResultSets = true
             };
 
 

@@ -1,14 +1,19 @@
-﻿using System.Data.Entity;
+﻿
 using EFDomain;
 using EFDomain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EF6Library.EFClasses
 {
-    public class EF6DbContext : DbContext
+    public class EFDbContext : DbContext
     {
-        public EF6DbContext() : base(Config.LocalDbConnectionStringEf)
+
+        protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
+            builder.UseSqlServer(Config.LocalDbConnectionStringEf);
         }
+
+
 
 
         public DbSet<Monster> Monsters { get; set; }

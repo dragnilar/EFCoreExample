@@ -4,7 +4,7 @@ using EFDomain.Models;
 using SMOLibrary;
 using SMOLibrary.DAOs;
 
-namespace EF6DataService
+namespace EFDataServices
 {
     public class DataServices
     {
